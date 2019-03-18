@@ -16,18 +16,18 @@ class TinyYolov3(nn.Module):
         layer_list = [
             # stage 6
             OrderedDict([
-                ('14_convbatch',    vn_layer.Conv2dBatchLeaky(256, 512, 3, 1)),
+                ('14_convbatch',    vn_layer.Conv2dBatchReLU(256, 512, 3, 1)),
                 ('15_conv',         nn.Conv2d(512, num_anchors_list[0]*(5+num_classes), 1, 1, 0)),
             ]),
             # stage 5
             # stage5 / upsample
             OrderedDict([
-                ('18_convbatch',    vn_layer.Conv2dBatchLeaky(256, 128, 1, 1)),
+                ('18_convbatch',    vn_layer.Conv2dBatchReLU(256, 128, 1, 1)),
                 ('19_upsample',     nn.Upsample(scale_factor=2)),
             ]),
             # stage5 / head
             OrderedDict([
-                ('21_convbatch',    vn_layer.Conv2dBatchLeaky(256 + 128, 256, 3, 1)),
+                ('21_convbatch',    vn_layer.Conv2dBatchReLU(256 + 128, 256, 3, 1)),
                 ('22_conv',         nn.Conv2d(256, num_anchors_list[0]*(5+num_classes), 1, 1, 0)),
             ]),
             ]

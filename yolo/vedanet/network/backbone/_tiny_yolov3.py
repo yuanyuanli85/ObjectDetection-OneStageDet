@@ -29,21 +29,21 @@ class TinyYolov3(nn.Module):
             # output redutcion 16
             # backbone
             OrderedDict([
-                ('0_convbatch',     vn_layer.Conv2dBatchLeaky(3, 16, 3, 1)),
+                ('0_convbatch',     vn_layer.Conv2dBatchReLU(3, 16, 3, 1)),
                 ('1_max',           nn.MaxPool2d(2, 2)),
-                ('2_convbatch',     vn_layer.Conv2dBatchLeaky(16, 32, 3, 1)),
+                ('2_convbatch',     vn_layer.Conv2dBatchReLU(16, 32, 3, 1)),
                 ('3_max',           nn.MaxPool2d(2, 2)),
-                ('4_convbatch',     vn_layer.Conv2dBatchLeaky(32, 64, 3, 1)),
+                ('4_convbatch',     vn_layer.Conv2dBatchReLU(32, 64, 3, 1)),
             ]),
 
             OrderedDict([
                 ('5_max',           nn.MaxPool2d(2, 2)),
-                ('6_convbatch',    vn_layer.Conv2dBatchLeaky(64, 128, 3, 1)),
+                ('6_convbatch',    vn_layer.Conv2dBatchReLU(64, 128, 3, 1)),
             ]),
 
             OrderedDict([
                 ('7_max',          nn.MaxPool2d(2, 2)),
-                ('8_convbatch',    vn_layer.Conv2dBatchLeaky(128, 256, 3, 1)),
+                ('8_convbatch',    vn_layer.Conv2dBatchReLU(128, 256, 3, 1)),
             ]),
 
             # Sequence 1 : input = sequence0
@@ -51,10 +51,10 @@ class TinyYolov3(nn.Module):
             # backbone
             OrderedDict([
                 ('9_max',          nn.MaxPool2d(2, 2)),
-                ('10_convbatch',    vn_layer.Conv2dBatchLeaky(256, 512, 3, 1)),
+                ('10_convbatch',    vn_layer.Conv2dBatchReLU(256, 512, 3, 1)),
                 ('11_max',          nn.MaxPool2d(3, 1, 1)),
-                ('12_convbatch',    vn_layer.Conv2dBatchLeaky(512, 1024, 3, 1)),
-                ('13_convbatch',    vn_layer.Conv2dBatchLeaky(1024, 256, 1, 1)),
+                ('12_convbatch',    vn_layer.Conv2dBatchReLU(512, 1024, 3, 1)),
+                ('13_convbatch',    vn_layer.Conv2dBatchReLU(1024, 256, 1, 1)),
             ]),
 
         ]
