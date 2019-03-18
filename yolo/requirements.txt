@@ -1,0 +1,17 @@
+addict==2.2.0
+certifi==2019.3.9
+chardet==3.0.4
+Cython==0.29.6
+idna==2.8
+mmcv==0.2.4
+netron==2.9.4
+numpy==1.16.2
+opencv-python==4.0.0.21
+Pillow==5.4.1
+PyYAML==5.1
+requests==2.21.0
+scipy==1.2.1
+six==1.12.0
+torch==0.4.0
+torchvision==0.2.2.post3
+urllib3==1.24.1
